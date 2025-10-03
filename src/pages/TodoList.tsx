@@ -1,6 +1,7 @@
 // src/pages/TodoList.tsx
 import { useState, type FormEvent } from 'react';
 import { useTodoStore } from '../store/useTodoStore';
+import TodoItem from '../components/TodoItem';  // 추가
 
 function TodoList() {
   const [input, setInput] = useState<string>('');
@@ -36,9 +37,7 @@ function TodoList() {
           <p>할 일이 없습니다.</p>
         ) : (
           todos.map(todo => (
-            <div key={todo.id} style={{ padding: '10px', border: '1px solid #ddd', marginBottom: '10px' }}>
-              {todo.text}
-            </div>
+            <TodoItem key={todo.id} todo={todo} />
           ))
         )}
       </div>
